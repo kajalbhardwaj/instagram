@@ -1,0 +1,21 @@
+<body class="container">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>created</strong><br>
+  <%= @post.conetent %>
+  <%= @post.title %>
+    
+</p>
+<% if current_user.likes.find_by(post: @post).nil? %>
+<form action="/likes" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="hidden" name="like[post_id]" value="<%= @post.id %>">
+<input type="button" value= "like">
+</form>
+<% else %>
+unlike
+<% end %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+</body>
