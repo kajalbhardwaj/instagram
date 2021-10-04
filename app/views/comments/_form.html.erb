@@ -1,0 +1,21 @@
+
+
+
+
+<p>
+<strong>comment</strong>
+  </p>
+
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  
+  <p>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+  <div class="actions">
+    <%= form.submit %>
+    </div>
+  </p>
+
+<% end %>
