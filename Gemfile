@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem "cancan"
 gem 'devise'
 gem "bootstrap_form", "~> 4.0"
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap4'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -57,3 +60,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'carrierwave', '~> 2.0'
+gem 'cloudinary'
+gem "figaro"
