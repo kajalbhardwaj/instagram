@@ -18,7 +18,7 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <i class="fab fa-instagram logo-design"></i>
-  <a class="navbar-brand" href="#">myInsta</a>
+  <a class="navbar-brand" href="/">myInsta</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,42 +26,35 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">aboutus</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 mr-3 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </ul>
+
+     <div style="width:100px;height:auto my-3">
+      <%# <%= link_to image_tag(current_user.pro_image, style:"width:500%") %>  
+      <%# <%= image_tag current_user.pro_image, size: "30x30", :class => 'ml-2' %> 
+     </div>
+
+    <form class="form-inline my-2 mr-3 my-lg-0" method="get" action="/search" >
+      <input class="form-control mr-sm-2"type="search" placeholder="Search" aria-label="Search" name="query">
       <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
     </form>
     <p class="navbar-text float-left m-0">
      <% if user_signed_in? %>
-       <strong class="mt-1"><%= current_user.email %></strong>
+       <strong class="mt-1"><%= current_user.first_name %></strong>
       <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link btn btn-primary' %> |
       <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link btn btn-primary'%>
       <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link btn btn-primary'%> |
-       <%= link_to "Login", new_user_session_path, :class => 'navbar-link btn btn-primary'%>
+      <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-info my-2 my-sm-0" %> |
+       <%= link_to "Login", new_user_session_path, :class => 'btn btn-info my-2 my-sm-0' %>
       <% end %>
    </p>
 
   </div>
+  
 </nav>
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
@@ -69,5 +62,6 @@
    
 
     <%= yield %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>
 </html>
