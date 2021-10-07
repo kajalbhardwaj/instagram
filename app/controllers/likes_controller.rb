@@ -1,21 +1,39 @@
 class LikesController < ApplicationController
+   before_action :find_post
+   before_action :find_like,only: [:destroy]
+   
     def create
-        @like = current_user.likes.new(like_params)
-        if !@like.save
-            flah[:notice] = @like.errors.full_message.to_sentence
+        if already_liked?
+            flash[:notice] = "you can not like more than once"
+    
+        else
+            @post.likes.create(user_id: current_user.id)
         end
-          redirect_to @like.post
-    end
+        redirect_to post_path(@post)
 
-    def destroy
-        @like = current_user.likes.find(params[:id])
-        post = @like.post
+end
+def destroy
+    if !(already_liked?)
+        flash[:notice] = "cannot unlike"
+    else
         @like.destroy
-        redirect_to post
     end
-    private
-    def likes_params
-        param.require(:like).permit(:post_id)
-    end
+    redirect_to post_path(@post)
+end
 
+def find_like
+    @like = @post.likes.find(params[:id])
+end
+private
+def find_post
+    @post = Post.find(params[:post_id])
+end
+
+def already_liked?
+    Like.where(user_id: current_user.id, post_id:
+    params[:post_id]).exists?
+end
+def find_like
+    @like = @post.likes.find(params[:id])
+end
 end
