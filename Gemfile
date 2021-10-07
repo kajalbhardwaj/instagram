@@ -26,6 +26,8 @@ gem 'devise'
 gem "bootstrap_form", "~> 4.0"
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap4'
+gem "rolify"
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
