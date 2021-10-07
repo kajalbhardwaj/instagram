@@ -15,6 +15,14 @@
                   method: :delete,   
                   data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %> <br>
 
+<%= @post.likes.count %> 
+<%= (@post.likes.count) == 1 ? 'Like': 'Likes' %>
+<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+   <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete, :class => 'btn btn-success', :style => 'border-radius: 25px;' %>
+<% else %>
+   <%= button_to 'Like', post_likes_path(@post), method: :post, :class => 'btn btn-success', :style => 'border-radius: 25px;' %>
+<% end %>
 
 <%= render "comments/comment", locals: {post: @post.comments } %>  
 
