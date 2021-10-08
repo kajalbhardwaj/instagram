@@ -1,22 +1,18 @@
 <body class="container">
-<%= bootstrap_form_for(@post) do |form| %>
-  
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    
-  
-
+  <%= bootstrap_form_for(@post) do |form| %>
+  <ul>
+  <% @post.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+  </ul>
   <div class="field">
     <%= form.text_area :title %><br>
     <%= form.text_area :conetent %>
-    <%= form.file_field :image %>
+    <%= form.file_field :avatar %>
   </div>
   <div class="actions">
     <%= form.submit %>
   </div>
-<% end %>
-
+  <% end %>
+  <%= link_to 'back', posts_path, class: "btn btn-primary my-3" %>
 </body>

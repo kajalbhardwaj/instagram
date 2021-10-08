@@ -6,28 +6,24 @@
   <strong>Content</strong><br>
   <%= @post.conetent %><br>
 </p>
-
 <div style="width:100px;height:auto my-3">
-<%= link_to image_tag(@post.avatar, style:"width:500%"), post_path %>
+  <%= link_to image_tag(@post.avatar, style:"width:500%"), post_path %>
 </div>
-<%= link_to 'Edit', edit_post_path(@post),  class: "btn btn-warning my-3" %> 
-<%= link_to "Destroy", post_path(@post), 
+<% if @post.user.id == current_user.id %>
+   <%= link_to 'Edit', edit_post_path(@post),  class: "btn btn-warning my-3" %> 
+   <%= link_to "Destroy", post_path(@post), 
                   method: :delete,   
                   data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %> <br>
-
+<% end %> 
 <%= @post.likes.count %> 
 <%= (@post.likes.count) == 1 ? 'Like': 'Likes' %>
 <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
    <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete, :class => 'btn btn-success', :style => 'border-radius: 25px;' %>
-<% else %>
+ <% else %>
    <%= button_to 'Like', post_likes_path(@post), method: :post, :class => 'btn btn-success', :style => 'border-radius: 25px;' %>
 <% end %>
-
 <%= render "comments/comment", locals: {post: @post.comments } %>  
-
 <%= render 'comments/form', locals: {post: @post} %>
-
 <%= link_to 'Back', posts_path, class: "btn btn-primary my-3" %>
- 
-</body>
+ </body>
