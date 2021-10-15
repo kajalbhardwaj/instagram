@@ -11,3 +11,28 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$( document ).on('turbolinks:load', function() {
+    $('#cliked').on('click', function(e) {
+        setClick(e);
+    });
+  })
+
+  function setClick(e){
+    var id = $(e.currentTarget).attr("data-id");
+    $.ajax({
+      url: "/set_click",
+      type: "GET",
+      data: {
+          click: true,
+          postId: id,
+      },
+      success: function (response) {
+        alert("Your cliked succeesuly! :)");
+        console.log('success')
+      },
+      error: function (error) {
+        console.log('error')
+      }
+    });
+  };
