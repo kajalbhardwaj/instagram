@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <body style="background-color:powderblue;">
     <title>Instagram</title>
-    
-    
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <i class="fab fa-instagram logo-design"></i>
-  <a class="navbar-brand" href="/">myInsta</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <i class="fab fa-instagram logo-design"></i>
+      <a class="navbar-brand" href="/">myInsta</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">aboutus</a>
-      </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
       </ul>
-
-     <div style="width:100px;height:auto my-3">
-      <%# <%= link_to image_tag(current_user.pro_image, style:"width:500%") %>  
-      <%# <%= image_tag current_user.pro_image, size: "30x30", :class => 'ml-2' %> 
+      <form class="form-inline my-2 mr-4 my-lg-0" method="get" action="/search" >
+       <input class="form-control mr-sm-2"type="search" placeholder="Search" aria-label="Search" name="query">
+       <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+      </form>
+       <p class="navbar-text float-left m-0">
+          <% if user_signed_in? %>
+           <strong class="mt-1"><%= current_user.email %></strong>
+           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link btn btn-primary' %> |
+           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link btn btn-primary'%>
+           <% else %>
+           <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-info my-2 my-sm-0" %> |
+           <%= link_to "Login", new_user_session_path, :class => 'btn btn-info my-2 my-sm-0' %>
+          <% end %>
+       </p>
      </div>
-
-    <form class="form-inline my-2 mr-3 my-lg-0" method="get" action="/search" >
-      <input class="form-control mr-sm-2"type="search" placeholder="Search" aria-label="Search" name="query">
-      <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <p class="navbar-text float-left m-0">
-     <% if user_signed_in? %>
-       <strong class="mt-1"><%= current_user.first_name %></strong>
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link btn btn-primary' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link btn btn-primary'%>
-      <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-info my-2 my-sm-0" %> |
-       <%= link_to "Login", new_user_session_path, :class => 'btn btn-info my-2 my-sm-0' %>
-      <% end %>
-   </p>
-
-  </div>
   
-</nav>
+    </nav>
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
-
-   
-
     <%= yield %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </body>

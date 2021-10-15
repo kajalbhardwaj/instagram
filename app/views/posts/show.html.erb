@@ -5,6 +5,9 @@
   <%= @post.title %><br>
   <strong>Content</strong><br>
   <%= @post.conetent %><br>
+  
+  <%= @post.click %><br>
+
 </p>
 <div style="width:100px;height:auto my-3">
   <%= link_to image_tag(@post.avatar, style:"width:500%"), post_path %>
@@ -14,6 +17,7 @@
    <%= link_to "Destroy", post_path(@post), 
                   method: :delete,   
                   data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %> <br>
+
 <% end %> 
 <%= @post.likes.count %> 
 <%= (@post.likes.count) == 1 ? 'Like': 'Likes' %>
@@ -27,3 +31,5 @@
 <%= render 'comments/form', locals: {post: @post} %>
 <%= link_to 'Back', posts_path, class: "btn btn-primary my-3" %>
  </body>
+
+
