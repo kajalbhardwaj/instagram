@@ -20,5 +20,6 @@ module Instagram
     # config.eager_load_paths << Rails.root.join("extras")
     config.action_mailer.default_url_options = { host: 'localhost:3000' }
     config.active_job.queue_adapter = :sidekiq
+    config.assets.initialize_on_precompile = false
   end
 end
