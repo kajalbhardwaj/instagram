@@ -99,6 +99,6 @@ test:
   <<: *default
   database: instagram_test
 
-#production:
- # <<: *default
-  #database: instagram_test
+production:
+  <<: *default
+  database: instagram_test
