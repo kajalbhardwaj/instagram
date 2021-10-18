@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@posts = Post.paginate(page: params[:page], per_page: 5)
     @posts = Post.all
     respond_to do |format|
       format.html
@@ -11,7 +10,6 @@ class PostsController < ApplicationController
          pdf: "Posts: #{@posts.count}"
       end
     end
-   # @posts = Post.paginate(page: params[:page], per_page: 5)
   end
 
   def search
