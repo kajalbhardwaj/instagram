@@ -18,8 +18,8 @@ module Instagram
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+   # config.action_mailer.default_url_options = { host: 'localhost:3000' }
     config.active_job.queue_adapter = :sidekiq
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
   end
 end

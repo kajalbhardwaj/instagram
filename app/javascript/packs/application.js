@@ -28,7 +28,7 @@ $( document ).on('turbolinks:load', function() {
           postId: id,
       },
       success: function (response) {
-        alert("Your cliked succeesuly! :)");
+        alert("Your clicked successfully! :)");
         console.log('success')
       },
       error: function (error) {

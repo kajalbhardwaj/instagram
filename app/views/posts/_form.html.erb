@@ -1,6 +1,7 @@
 <body class="container">
   <%= bootstrap_form_for(@post) do |form| %>
-  <ul>
+
+<ul>
   <% @post.errors.full_messages.each do |message| %>
   <li><%= message %></li>
   <% end %>
@@ -10,9 +11,14 @@
     <%= form.text_area :conetent %>
     <%= form.file_field :avatar %>
   </div>
-  <div class="actions">
+  <div class="actions" data-toggle="modal" data-target="#createModal">
     <%= form.submit %>
   </div>
   <% end %>
   <%= link_to 'back', posts_path, class: "btn btn-primary my-3" %>
 </body>
+
+
+
+
+

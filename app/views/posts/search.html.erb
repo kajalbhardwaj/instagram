@@ -1,2 +1,38 @@
 <h1>search results</h1>
-<%= render @posts %>
+<body class="container">
+  <% @posts.each do |post| %>
+    <% if post.title.present? %>
+      <div class="card" style="background-color:azure;">
+        <div class="card-body">
+          <strong><%= post.title %></strong><br>
+          <p><%= truncate post.conetent, length: 200 %><span><%= link_to 'Read more', post %></span>
+        </div>
+        <div class="my-3 ml-3">
+       
+          </div>
+          <span class="ml-3 mb-3">
+          <%= link_to 'Show', post_path(post), class: "btn btn-success"%>
+          <% if post.user.id == current_user.id %>
+            <%= link_to 'Edit', edit_post_path(post),  class: "btn btn-warning" %> 
+            <%= link_to "Destroy", post_path(post), 
+                  method: :delete,   
+                  data: { confirm: "Are you sure?" }, class: "btn btn-danger" %> 
+
+          <% end %>  
+          <button type="button" class="btn btn-warning" id="cliked" data-id= '<%= post.id %>' >Click</button>
+          </span>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+</body>
+<%= link_to "PDF", posts_path(format: :pdf), class: "btn btn-primary btn-lg mb-2" %>
+<%= link_to 'This post in PDF', posts_path(@post, format: :pdf),  class: "btn btn-primary btn-lg mb-2" %>
+
+
+
+
+
+
+
+

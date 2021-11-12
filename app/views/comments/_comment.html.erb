@@ -2,8 +2,6 @@
   <% @post.comments.each do |comment| %> 
     <small>by <%= comment.user.email %></small><br>
     <%= comment.content %><br>  
-    <%= link_to 'Destroy', [comment.post, comment],
-              method: :delete,
-              data: { confirm: "Are you sure?" }, class: "btn btn-warning btn-sm" %>
+ 
   <hr>
   <% end %>   

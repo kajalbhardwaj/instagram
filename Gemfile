@@ -30,7 +30,7 @@ gem "rolify"
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary", group: :development
 gem "wkhtmltopdf-heroku", group: :production
-# gem 'redis-rails'
+gem 'redis-rails'
 gem "sidekiq"
 gem 'sidekiq-cron'
 # Use Active Storage variant

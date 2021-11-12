@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   root 'posts#index'
   #root 'posts#index'
+  get "/requests", to: "requests#index"
   get " /posts", to: "posts#index"
   get "/comments", to: "comments#create"
   get '/search', to: "posts#search"
   get '/about', to: "posts#about"
+  get '/Mypost', to: "posts#Mypost"
   get '/set_click', to: "posts#set_click"
   devise_for :users
 
@@ -17,5 +19,10 @@ Rails.application.routes.draw do
       resources :photos, only: [:create]
       resources :comments, only: [:create, :destroy]
       resources :likes, only: [:create, :destroy]
+      
     end
+      resources :users do
+        resources :relationships, only: [:create, :destroy]
+      end
+      #resources :relationships, only: [:destroy]
 end
