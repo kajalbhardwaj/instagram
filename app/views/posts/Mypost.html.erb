@@ -1,0 +1,27 @@
+<body class ="container">
+
+ <% Post.all.each do |post| %>
+ <%# <% @posts.each do |post| %> 
+  <div class="card mt-3 post" style="background-color:azure;">
+    <div class="card-header d-flex align-items-center">
+      <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+      <% end %>
+      <%= link_to user_path(post.user), class: "normal-color no-text-decoration",
+        title: post.user.email do %>
+        <strong><%= post.user.email %></strong>
+       
+      <% end %>
+      
+        <%# <%= link_to post_path(post), method: :delete, class: "ml-auto delete-post-icon mx-0 my-auto" do %> 
+          <%# <i class="far fa-trash-alt" aria-hidden="true"></i> %>
+        
+      <%# <% end %> 
+    </div>
+    <div>
+        <span><%= post.title %></span>
+        <span><%= post.conetent %></span>
+      </div>
+
+<% end %>
+</body>
+    
