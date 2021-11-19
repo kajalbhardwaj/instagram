@@ -1,4 +1,45 @@
 <body class="container">
+<script>
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").toggle(1000);
+  });
+ 
+  
+  
+});
+</script>
+</head>
+<head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+
+                $('#btnSubmit').click(function() {
+                    var inputVal = $('#inputField').val();
+                    var id = $('#btnSubmit').attr("data")
+                    $.ajax
+                    ({
+                        type: "GET",
+                        url: '/update_feild',
+
+                        data: ({"content":inputVal,
+                        "postId":id,
+                        
+                        })
+                    })
+                    .done(function(data) {
+                        console.log(data);
+                    });
+                });
+            });
+
+
+
+
+        </script>
+
+
 
 <p>
 
@@ -13,7 +54,7 @@
 <div style="width:100px;height:auto my-3">
   <%= link_to image_tag(@post.avatar, style:"width:500%"), post_path %>
 </div>
-
+<p id="p">
 <% if @post.user.id == current_user.id %> 
  <%# <% if current_user.has_role? :user %> 
 
@@ -23,6 +64,19 @@
                   data: { confirm: "Are you sure?",remote: true }, class: "btn btn-danger my-3" %> <br>
 
 <% end %> 
+
+</p>
+<button id="hide">Hide</button>
+
+<p>
+<input type="text_field" id='inputField'  name='content' onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" value='<%= @post.submit %>' />
+  
+        <input type='submit'  id='btnSubmit' data= '<%= @post.id %>' value='submit ' />
+ 
+ <%= link_to "Post CSV Downloader", post_csv_path(@post, format: "csv"), class: "btn btn-warning my-3"%> 
+
+</p>
+
 <%= @post.likes.count %> 
 <%= (@post.likes.count) == 1 ? 'Like': 'Likes' %>
 <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
@@ -32,12 +86,15 @@
    <%= button_to 'Like', post_likes_path(@post),remote: true, method: :post,  :class => 'btn btn-success',  :style => 'border-radius: 25px;' %>
 <% end %>
 
-  
+
 
 
 <%= render "comments/comment", locals: {post: @post.comments } %>  
 <%= render 'comments/form', locals: {post: @post} %>
 <%= link_to 'Back', posts_path, class: "btn btn-primary my-3" %>
+
+
  </body>
+
 
 

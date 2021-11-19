@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
+    
     #@posts = Post.order(created_at: :desc)
     @posts = Post.paginate(page: params[:page], per_page: 5)
     respond_to do |format|
@@ -14,6 +15,15 @@ class PostsController < ApplicationController
     end
   end
 
+def post_csv
+  @posts = Post.all
+  respond_to do |format|
+   format.html
+   format.csv { send_data @posts.to_csv, type: 'text/csv', filename: "All post-#{Date.today}.csv" }
+  end
+end
+
+  
   def search
     @query = params[:query]
     @posts = Post.where("posts.title LIKE ?",["%#{@query}%"])
@@ -44,6 +54,7 @@ class PostsController < ApplicationController
           pdf: "Post ID: #{@post.id}"
       end
     end
+    
   end
 
   def edit
@@ -69,6 +80,17 @@ class PostsController < ApplicationController
       @post.update(click: params[:click])
     end
   end
+
+
+  def update_feild
+    
+    @post = Post.find(params[:postId])
+    @post.update(submit: params[:content])
+    
+    
+  end
+
+
 
   def about
   end

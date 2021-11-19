@@ -1,23 +1,108 @@
+<html>
+<head>
+
+<script>
+$(document).ready(function(){
+  $("#bg-color").css("background-color", "powderblue");
+  $("button").click(function(){
+    $("div").css("background-color", "#d0db67");
+    $("#bg-color").css("background-color", "white");
+  
+   
+  });
+  
+$("#yellow").click(function(){
+    $("div").css("background-color", "#f5ebf2");
+     $("#bg-color").css("background-color", "#d0db67");
+  
+});
+
+$("#pink").click(function(){
+    $("div").css("background-color", "pink");
+  $("#bg-color").css("background-color", "white");
+});
+$("#p").click(function(){
+    $("div").css("background-color", "#b099a4");
+  $("#bg-color").css("background-color", "#d6d6ae");
+});
+$("#gray").click(function(){
+    $("div").css("background-color", "#d6d0c9");
+  $("#bg-color").css("background-color", "#d6c3ae");
+});
+
+});
+
+
+
+
+</script>
+</head>
+<body>
+
+
+
+<h1>change your color</h1><hr>
+<button>white</button>
+
+
+<button id="yellow">green </button>
+<button id="pink">pink </button>
+<button id="p">yellow </button>
+<button id="gray">gray </button>
+
+
+<style>
+button {
+  background-color: white; 
+  border: none;
+  color: black;
+}
+#yellow {
+  background-color: green; 
+  border: none;
+  color: black;
+}
+#pink {
+  background-color: pink; 
+  border: none;
+  color: black;
+}
+
+#p {
+  background-color: yellow; 
+  border: none;
+  color: black;
+}
+#gray {
+  background-color: gray; 
+  border: none;
+  color: black;
+}
+</style>
+
 <body class="container">
 
 <div id="post-form"> 
-<%= link_to 'Create your post', new_post_path, remote: true, class: "btn btn-primary btn-lg mb-2"%>
+
+<%= link_to 'Create your post', new_post_path, remote: true, class: "btn btn-primary btn-lg mt-3 mb-2"%>
 </div>
 
   <% @posts.each do |post| %>
   <%# <%= render :partial => post.comments %> 
 
     <% if post.title.present? %>
+    
       <div class="card" style="background-color:azure;">
         <div class="card-body">
           <strong><%= post.title %></strong><br>
-          <p><%= truncate post.conetent, length: 200 %><span><%= link_to 'Read more', post %></span>
+          <%= truncate post.conetent, length: 200 %><span><%= link_to 'Read more', post %></span>
         </div>
         
         <div style="width:100px;height:auto my-3 ">
         <%= link_to image_tag(post.avatar, style:"width:100%"), @post_path %>
       
         </div>
+        
         <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
            <% if pre_like %>
               <%= button_to 'Unlike', post_like_path(post, pre_like),remote: true, method: :delete, :class => 'btn btn-success', :style => 'border-radius: 25px;' %>

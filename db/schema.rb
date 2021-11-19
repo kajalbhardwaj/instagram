@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_28_052813) do
+ActiveRecord::Schema.define(version: 2021_11_16_092840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_10_28_052813) do
     t.string "title"
     t.text "image"
     t.string "click"
+    t.string "submit"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
