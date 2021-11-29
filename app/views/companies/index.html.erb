@@ -1,0 +1,15 @@
+<h1>hello index</h1>
+<div> 
+
+<%= link_to 'company form', new_company_path,  class: "btn btn-primary btn-lg mt-3 mb-2"%>
+</div>
+<% Company.all.each do |company| %><br>
+
+   <%= company.first_name%><br>
+   <%= company.last_name%><br>
+   <%= company.email%><br>
+   <%= company.gender%><br>
+   <%= company.salary%><br>
+   <%= company.city%><br>
+<%= link_to 'Show', company_path(company), class: "btn btn-success"%>
+<% end %>     

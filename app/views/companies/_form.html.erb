@@ -1,0 +1,173 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+
+
+
+$(document).ready(function(){
+
+  $(".pwd-validate").keyup(function(e){
+  
+     var pswd = $(e.target).val();
+
+     if (pswd.length >= 8) {
+       $("#change2").css("color", "green");
+       $("#number-dot").html('&#x2714');
+     }
+     else {
+      $("#change2").css("color", "black");
+     }
+     
+
+  if (pswd.match(/[A-Z]/) ) {
+       $("#change3").css("color", "green");
+       $("#number-dot1").html('&#x2714');
+     }
+     else {
+      $("#change3").css("color", "black");
+     }
+     
+  if (pswd.match(/[a-z]/) ) {
+       $("#change4").css("color", "green");
+       $("#number-dot2").html('&#x2714');
+     }
+     else {
+      $("#change4").css("color", "black");
+     }
+     
+  
+  
+  
+  });
+  
+
+
+
+
+});
+
+
+// $(document).ready(function () {
+//             $("#js").keypress(function () {
+//                 $("#js").css("color", "#ffffff");
+//             });
+//         });
+//   $(document).ready(function(){
+//     debugger
+//    $(document).on("keyup", ".pwd-validate", function(e)){
+//   debugger
+//   var secur =$(this).val();
+//   if (secur.length) >= 10 ){
+//     $('#length').css('color','green');
+//     $('#length').attr('data-text','*');
+//   }
+//   else{
+//     $('#length').css('color','black');
+//   }
+//   if (secur.match(/[A-Z]/)){
+//     $('#capital').css('color','green')
+//      $('#capital').attr('data-text','*');
+//   }
+//   else{
+//      $('#capital').css('color','black');
+//   }
+
+// if (secur.match(/\d/)){
+//     $('#number').css('color','green')
+//      $('#number').attr('data-text','*');
+//   }
+//   else{
+//      $('#number').css('color','black');
+//   }
+
+
+
+
+// }
+//   }
+
+</script>
+</head>
+
+
+
+
+
+<body class="container">
+
+<strong>company form</strong>
+  <%= bootstrap_form_with model: @company do |f| %>
+<ul>
+  <% @company.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+  </ul>
+
+  <div class="field">
+  <div>
+  
+    <%= f.text_field :first_name %>
+  </div>
+ <div>
+  
+    <%= f.text_field :last_name %>
+  </div>
+
+    <div class="pwd-validate" >
+    <%= f.text_field :security %>
+    <strong>Mendatory feild</strong><br>
+    <span id="number-dot">&#8226</span><span  id="change2"> limit 8</span><br>
+    <span id="number-dot1">&#8226</span><span id="change3"> letter must be capital</span><br>
+    <span id="number-dot2">&#8226</span><span id="change4"> letter must be small</span><br>
+  </div>
+    
+    <div>
+
+
+    <%= f.select :email, options_for_select(["kajalbhardwaj.gmail.com", "neha@gmai.com", "kajal@bestpeers.com"]) %>
+  </div>
+
+ <div>
+  
+    <%= f.text_field :no_of_employees %>
+  </div>
+<div>
+
+ <%= f.radio_button :gender, "male" %>
+<%= f.radio_button :gender, "female" %>
+
+</div>
+
+<div>
+    
+    <%= f.text_field :salary %>
+  </div>
+
+  </div>
+    <div>
+
+    <%= f.text_field :city %>
+  </div>
+<div>
+    <%= f.check_box :terms %>
+    <%= f.label :terms, "i agree all terms and condition" %>
+  </div>
+
+
+  <%# <input type="text" name="country_code" title="Error Message" pattern="[1-9]{1}[0-9]{9}">  %>
+
+   <div class="button">
+    <%= f.submit %>
+    </div>
+    
+  
+
+
+
+  
+  <% end %>
+  
+ 
+</body>
+
+

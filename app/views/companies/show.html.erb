@@ -1,0 +1,12 @@
+<strong>show company<strong><br>
+ <%= @company.first_name%><br>
+   <%= @company.last_name%><br>
+   <%= @company.email%><br>
+   <%= @company.gender%><br>
+   <%= @company.salary%><br>
+   <%= @company.city%><br>
+   <%= link_to "Edit", edit_company_path(@company),class: "btn btn-warning"%>
+    <%= link_to "Destroy", company_path(@company), 
+                  method: :delete,   
+                  data: { confirm: "Are you sure?",remote: true }, class: "btn btn-danger my-3" %> 
+<%= link_to "back", companies_path, class: "btn btn-danger"%>
