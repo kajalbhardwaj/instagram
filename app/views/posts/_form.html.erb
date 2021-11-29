@@ -1,3 +1,5 @@
+
+
 <body class="container">
   <%= bootstrap_form_for(@post) do |form| %>
 
@@ -11,14 +13,13 @@
     <%= form.text_area :conetent %>
     <%= form.file_field :avatar %>
   </div>
+  
+   
   <div class="actions" data-toggle="modal" data-target="#createModal">
     <%= form.submit %>
   </div>
+  
   <% end %>
+  
   <%= link_to 'back', posts_path, class: "btn btn-primary my-3" %>
 </body>
-
-
-
-
-

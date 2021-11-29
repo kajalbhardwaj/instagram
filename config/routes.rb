@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   root 'posts#index'
   #root 'posts#index'
+ # post "/companys", to: "companys#index"
+  get "/companies", to: "companies#index"
   get "/requests", to: "requests#index"
   get " /posts", to: "posts#index"
   get "/comments", to: "comments#create"
@@ -27,4 +29,5 @@ Rails.application.routes.draw do
         resources :relationships, only: [:create, :destroy]
       end
       #resources :relationships, only: [:destroy]
+    resources :companies
 end
