@@ -1,3 +1,4 @@
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -33,6 +34,9 @@ gem "wkhtmltopdf-heroku", group: :production
 gem 'redis-rails'
 gem "sidekiq"
 gem 'sidekiq-cron'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'rspec-rails', ">= 3.9.0"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -16,6 +16,7 @@ $(document).ready(function(){
      }
      else {
       $("#change2").css("color", "black");
+      $("#number-dot").html('&#8226');
      }
      
 
@@ -25,6 +26,7 @@ $(document).ready(function(){
      }
      else {
       $("#change3").css("color", "black");
+      $("#number-dot1").html('&#8226');
      }
      
   if (pswd.match(/[a-z]/) ) {
@@ -33,10 +35,12 @@ $(document).ready(function(){
      }
      else {
       $("#change4").css("color", "black");
+      $("#number-dot2").html('&#8226');
      }
      
-  
-  
+ 
+
+ 
   
   });
   
@@ -113,15 +117,24 @@ $(document).ready(function(){
     <%= f.text_field :last_name %>
   </div>
 
+<div>
+<%= f.month_field :birthday_month %>
+</div>
+<%# <%= f.week_field :birthday_week %>
+<%# <%= f.search_field :name %>
+
+
+
+
     <div class="pwd-validate" >
     <%= f.text_field :security %>
-    <strong>Mendatory feild</strong><br>
+    <strong>Mandatory field</strong><br>
     <span id="number-dot">&#8226</span><span  id="change2"> limit 8</span><br>
     <span id="number-dot1">&#8226</span><span id="change3"> letter must be capital</span><br>
     <span id="number-dot2">&#8226</span><span id="change4"> letter must be small</span><br>
   </div>
     
-    <div>
+    <div id ="js">
 
 
     <%= f.select :email, options_for_select(["kajalbhardwaj.gmail.com", "neha@gmai.com", "kajal@bestpeers.com"]) %>
@@ -148,10 +161,14 @@ $(document).ready(function(){
 
     <%= f.text_field :city %>
   </div>
-<div>
+  <div>
     <%= f.check_box :terms %>
     <%= f.label :terms, "i agree all terms and condition" %>
+    <%= f.check_box :terms %>
+    <%= f.label :terms, "i don't agree all terms and condition" %>
   </div>
+
+
 
 
   <%# <input type="text" name="country_code" title="Error Message" pattern="[1-9]{1}[0-9]{9}">  %>
